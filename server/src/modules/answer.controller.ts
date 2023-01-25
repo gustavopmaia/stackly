@@ -19,3 +19,13 @@ export const createAnswer = async (req: FastifyRequest) => {
     },
   })
 }
+
+export const getAnswers = async (req: FastifyRequest) => {
+  const { page }: any = req.query
+
+  if (isNaN(page)) {
+    throw new Error('ERROR: The specified page number is invalid')
+  } else {
+    return getAnswersSvc(parseInt(page))
+  }
+}
