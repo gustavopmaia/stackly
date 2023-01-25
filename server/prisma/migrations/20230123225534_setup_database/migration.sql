@@ -16,6 +16,8 @@ CREATE TABLE "questions" (
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "likes" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
     "user_id" TEXT NOT NULL,
 
     CONSTRAINT "questions_pkey" PRIMARY KEY ("id")
@@ -27,6 +29,8 @@ CREATE TABLE "answers" (
     "content" TEXT NOT NULL,
     "question_id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "answers_pkey" PRIMARY KEY ("id")
 );
@@ -36,9 +40,6 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "questions_user_id_key" ON "questions"("user_id");
-
--- CreateIndex
-CREATE UNIQUE INDEX "answers_question_id_user_id_key" ON "answers"("question_id", "user_id");
 
 -- AddForeignKey
 ALTER TABLE "questions" ADD CONSTRAINT "questions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
