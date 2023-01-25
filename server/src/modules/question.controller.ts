@@ -1,4 +1,4 @@
-import { FastifyRequest } from 'fastify'
+import { FastifyReply, FastifyRequest } from 'fastify'
 import { prisma } from '../lib/prisma'
 import { z } from 'zod'
 
@@ -22,10 +22,15 @@ export const createQuestion = async (req: FastifyRequest) => {
   })
 }
 
-export const getQuestions = async (req: FastifyRequest) => {
+export const getQuestions = async (req: FastifyRequest, res: FastifyReply) => {
   const { page }: any = req.query
 
-  return getQuestionsSvc(parseInt(page))
+  if (isNaN(page)) {
+    res.status(400)
+    throw new Error('ERROR: The specified page number is invalid')
+  } else {
+    return getQuestionsSvc(parseInt(page))
+  }
 }
 
 export const getQuestion = async (req: FastifyRequest) => {
