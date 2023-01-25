@@ -33,11 +33,11 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/questions', async (req, res) => getQuestions(req, res)) // Get question and paginate by /?page=0
   app.get('/questions/:id', async (req) => getQuestion(req)) // Get question by id
   app.patch('/questions', async (req) => updateQuestion(req)) // Update question
-  app.delete('/questions/:id', async (req) => deleteQuestion(req))
+  app.delete('/questions/:id', async (req) => deleteQuestion(req)) // Delete question
 
-  app.post('/answers', async (req) => createAnswer(req))
-  app.get('/answers', async (req, res) => getAnswers(req, res))
-  app.get('/answers/:id', async (req) => getAnswer(req))
-  app.patch('/answers', async (req) => updateAnswer(req))
-  app.delete('/answers/:id', async (req) => deleteAnswer(req))
+  app.post('/answers', async (req) => createAnswer(req)) // Create answer
+  app.get('/answers', async (req, res) => getAnswers(req, res)) // Get answer and paginate by /?page=0
+  app.get('/answers/:id', async (req) => getAnswer(req)) // Get answer by id
+  app.patch('/answers', async (req) => updateAnswer(req)) // Update question
+  app.delete('/answers/:id', async (req) => deleteAnswer(req)) // Delete question
 }
