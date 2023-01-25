@@ -41,3 +41,37 @@ export const getQuestion = async (req: FastifyRequest) => {
     },
   })
 }
+
+export const updateQuestion = async (req: FastifyRequest) => {
+  const updateQuestionObject = z.object({
+    id: z.string().uuid(),
+    title: z.string().optional(),
+    content: z.string().optional(),
+  })
+
+  const { id, title, content } = updateQuestionObject.parse(req.body)
+
+  return await prisma.question.update({
+    where: {
+      id,
+    },
+    data: {
+      title,
+      content,
+    },
+  })
+}
+
+export const deleteQuestion = async (req: FastifyRequest) => {
+  const deleteQuestionObject = z.object({
+    id: z.string().uuid(),
+  })
+
+  const { id } = deleteQuestionObject.parse(req.params)
+
+  await prisma.question.delete({
+    where: {
+      id,
+    },
+  })
+}

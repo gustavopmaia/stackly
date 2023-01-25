@@ -49,15 +49,16 @@ export const deleteUser = async (req: FastifyRequest) => {
 }
 
 export const updateUser = async (req: FastifyRequest) => {
-  const getUserObject = z.object({
+  const getUserParams = z.object({
     id: z.string().uuid(),
     name: z.string().optional(),
     email: z.string().optional(),
     password: z.string().optional(),
   })
 
-  const { id } = getUserObject.parse(req.params)
-  const { name, email, password } = getUserObject.parse(req.body)
+  const { password, email, name, id } = getUserParams.parse(req.body)
+
+  console.log(id)
 
   return await prisma.user.update({
     where: {
