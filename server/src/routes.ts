@@ -6,6 +6,7 @@ import {
   deleteUser,
   getUserById,
   updateUser,
+  login,
 } from './modules/user.controller'
 
 import {
@@ -40,4 +41,6 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/answers/:id', async (req) => getAnswer(req)) // Get answer by id
   app.patch('/answers', async (req) => updateAnswer(req)) // Update question
   app.delete('/answers/:id', async (req) => deleteAnswer(req)) // Delete question
+
+  app.post('/login', async (req, res) => login(req, res))
 }

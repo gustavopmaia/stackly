@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import argon2 from 'argon2'
 
 const prisma = new PrismaClient()
 
@@ -21,7 +22,7 @@ async function main() {
         id: userId,
         name: 'Gustavo Maia',
         email: 'gustavo@teste.com',
-        password_hash: '123456',
+        password_hash: await argon2.hash('123456'),
       },
     }),
     prisma.question.create({

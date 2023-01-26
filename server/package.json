@@ -18,8 +18,11 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@prisma/client": "^4.9.0",
+    "@types/jsonwebtoken": "^9.0.1",
+    "argon2": "^0.30.3",
     "fastify": "^4.12.0",
     "fastify-decorators": "^3.15.0",
+    "jsonwebtoken": "^9.0.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {
