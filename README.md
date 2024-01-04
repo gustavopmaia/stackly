@@ -1,0 +1,1 @@
+No Stackly, alunos encontram um espaço para pedir ajuda em suas tarefas de programação, códigos e trabalhos acadêmicos. É a comunidade ideal para compartilhar dúvidas, colaborar com colegas e obter orientação valiosa. Junte-se a nós para simplificar sua jornada na escola ou faculdade, recebendo suporte direto de uma comunidade engajada de programadores e estudantes como você!
